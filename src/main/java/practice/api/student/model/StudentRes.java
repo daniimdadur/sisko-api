@@ -1,11 +1,10 @@
-package practice.api.fakultas.model;
+package practice.api.student.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.BeanUtils;
-import practice.api.majors.model.MajorsRes;
+import practice.api.course.model.CourseRes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +13,11 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FakultasRes {
+public class StudentRes {
     private String id;
-    private String code;
+    private String nim;
     private String name;
-    private List<MajorsRes> majorsList = new ArrayList<>();
+    private String majorsId;
+    private String majorsName;
+    private List<CourseRes> courseList = new ArrayList<>();
 }

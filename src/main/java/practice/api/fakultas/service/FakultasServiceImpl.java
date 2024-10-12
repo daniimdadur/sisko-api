@@ -7,11 +7,10 @@ import practice.api.fakultas.model.FakultasEntity;
 import practice.api.fakultas.model.FakultasReq;
 import practice.api.fakultas.model.FakultasRes;
 import practice.api.fakultas.repository.FakultasRepo;
+import practice.api.majors.model.MajorsEntity;
+import practice.api.majors.model.MajorsRes;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,7 +25,7 @@ public class FakultasServiceImpl implements FakultasService {
             return Collections.emptyList();
         }
 
-        return result.stream().map(FakultasRes::new).collect(Collectors.toList());
+        return result.stream().map(this::convertEntityToRes).collect(Collectors.toList());
     }
 
     @Override
@@ -36,7 +35,7 @@ public class FakultasServiceImpl implements FakultasService {
             return Optional.empty();
         }
 
-        return Optional.of(new FakultasRes(result));
+        return Optional.of(convertEntityToRes(result));
     }
 
     @Override
@@ -48,7 +47,7 @@ public class FakultasServiceImpl implements FakultasService {
 
         try {
             this.fakultasRepo.save(result);
-            return Optional.of(new FakultasRes(result));
+            return Optional.of(convertEntityToRes(result));
         } catch (Exception e) {
             return Optional.empty();
         }
@@ -64,7 +63,7 @@ public class FakultasServiceImpl implements FakultasService {
         BeanUtils.copyProperties(request, result);
         try {
             fakultasRepo.save(result);
-            return Optional.of(new FakultasRes(result));
+            return Optional.of(convertEntityToRes(result));
         } catch (Exception e) {
             return Optional.empty();
         }
@@ -79,9 +78,30 @@ public class FakultasServiceImpl implements FakultasService {
 
         try {
             fakultasRepo.delete(result);
-            return Optional.of(new FakultasRes(result));
+            return Optional.of(convertEntityToRes(result));
         } catch (Exception e) {
             return Optional.empty();
         }
+    }
+
+    private FakultasRes convertEntityToRes(FakultasEntity entity) {
+        FakultasRes result = new FakultasRes();
+
+        BeanUtils.copyProperties(entity, result);
+        if (!entity.getMajorsList().isEmpty()) {
+            List<MajorsRes> majorsResList = new ArrayList<>();
+            for (MajorsEntity majorsEntity : entity.getMajorsList()) {
+                MajorsRes majorsRes = new MajorsRes();
+
+                BeanUtils.copyProperties(majorsEntity, majorsRes);
+                majorsRes.setFakultasId(result.getId());
+                majorsRes.setFakultasName(result.getName());
+                majorsResList.add(majorsRes);
+            }
+
+            result.setMajorsList(majorsResList);
+        }
+
+        return result;
     }
 }
