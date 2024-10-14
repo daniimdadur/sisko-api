@@ -94,7 +94,6 @@ public class FakultasServiceImpl implements FakultasService {
                 MajorsRes majorsRes = new MajorsRes();
 
                 BeanUtils.copyProperties(majorsEntity, majorsRes);
-                majorsRes.setFakultasId(result.getId());
                 majorsRes.setFakultasName(result.getName());
                 majorsResList.add(majorsRes);
             }
