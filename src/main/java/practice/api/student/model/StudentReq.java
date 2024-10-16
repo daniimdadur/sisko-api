@@ -13,5 +13,6 @@ public class StudentReq {
     private String id;
     private String nim;
     private String name;
+    private String gender;
     private String majorsId;
 }

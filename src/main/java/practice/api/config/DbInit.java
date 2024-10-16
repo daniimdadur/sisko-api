@@ -33,7 +33,7 @@ public class DbInit implements CommandLineRunner {
         List<FakultasEntity> fakultasList = new ArrayList<>();
         FakultasEntity fk = new FakultasEntity("f47ac10b-58cc-4372-a567-0e02b2c3d479", "F001", "Fakultas Kedokteran");
         MajorsEntity dh = new MajorsEntity("1bfcad83-c381-4eca-98c5-ab209857e894", "DH", "Dokter Hewan");
-        StudentEntity sabil = new StudentEntity("9f70958d-3bdc-4ac8-8782-2f475f540c8e", "200305", "Sabilla");
+        StudentEntity sabil = new StudentEntity("9f70958d-3bdc-4ac8-8782-2f475f540c8e", "200305", "Sabilla", "Laki-laki");
         CourseEntity vaksinasi = new CourseEntity("fc47f4cb-b3c2-4629-ae70-3f3af55c847a", "H001", "Vaksinasi", "dr. Kureha", "9.0");
 
         fk.addMajor(dh);
@@ -42,7 +42,7 @@ public class DbInit implements CommandLineRunner {
 
         FakultasEntity fd = new FakultasEntity("8c9999c2-57de-4e0f-a174-72317d8f1288", "F002", "Fakultas Dakwah");
         MajorsEntity bki = new MajorsEntity("1eaee9d7-8597-43be-8179-dff30ae7cf95", "BKI", "Bimbingan Konseling Islam");
-        StudentEntity dudu = new StudentEntity("1718a3b1-5947-4209-8e41-a44d7256e86f", "200012", "Dudu Abdullah");
+        StudentEntity dudu = new StudentEntity("1718a3b1-5947-4209-8e41-a44d7256e86f", "200012", "Dudu Abdullah", "Perempuan");
         CourseEntity mh = new CourseEntity("53421a17-1fa3-4243-af23-3e175386a79d", "M001", "Mental Heath", "Dr. Hiluluk", "8.0");
 
         fd.addMajor(bki);

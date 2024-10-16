@@ -29,6 +29,9 @@ public class StudentEntity {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "gender")
+    private String gender;
+
     @Column(name = "majors_id", insertable = false, updatable = false)
     private String majorsId;
 
@@ -44,9 +47,10 @@ public class StudentEntity {
         course.setStudent(this);
     }
 
-    public StudentEntity(String id, String nim, String name) {
+    public StudentEntity(String id, String nim, String name, String gender) {
         this.id = id;
         this.nim = nim;
         this.name = name;
+        this.gender = gender;
     }
 }

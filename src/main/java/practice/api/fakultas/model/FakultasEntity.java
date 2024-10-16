@@ -28,7 +28,7 @@ public class FakultasEntity {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "fakultas",fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "fakultas", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<MajorsEntity> majorsList = new ArrayList<>();
 
     public void addMajor(MajorsEntity major) {

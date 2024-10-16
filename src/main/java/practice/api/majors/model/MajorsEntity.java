@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import practice.api.course.model.CourseEntity;
 import practice.api.fakultas.model.FakultasEntity;
 import practice.api.student.model.StudentEntity;
 
@@ -37,7 +36,7 @@ public class MajorsEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private FakultasEntity fakultas;
 
-    @OneToMany(mappedBy = "majors",fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "majors", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<StudentEntity> studentList = new ArrayList<>();
 
     public void addStudent(StudentEntity student) {

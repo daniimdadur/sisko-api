@@ -17,6 +17,7 @@ public class StudentRes {
     private String id;
     private String nim;
     private String name;
+    private String gender;
     private String majorsId;
     private String majorsName;
     private List<CourseRes> courseList = new ArrayList<>();
